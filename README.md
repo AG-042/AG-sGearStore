@@ -1,71 +1,112 @@
-# AG's GearStore
+# 🏆 AG's GearStore - Complete E-Commerce Platform
 
-A modern e-commerce platform for soccer gear with Paystack payment integration, built with Django REST Framework and Next.js.
+A modern, full-stack e-commerce platform for soccer gear featuring Paystack payment integration, user authentication, and a complete shopping experience. Built with Django REST Framework and Next.js.
 
-## 🎯 Features
+[![Django](https://img.shields.io/badge/Django-5.2-green.svg)](https://www.djangoproject.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.0-black.svg)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![Paystack](https://img.shields.io/badge/Payments-Paystack-orange.svg)](https://paystack.com/)
 
-- ✅ **Product Catalog** - Browse soccer jerseys, cleats, and accessories
-- ✅ **Shopping Cart** - Add items with size selection
-- ✅ **Secure Payments** - Paystack integration for card payments
-- ✅ **User Authentication** - JWT-based auth with loyalty points
-- ✅ **Guest Checkout** - Buy without creating an account
-- ✅ **Responsive Design** - Works on mobile, tablet, and desktop
-- ✅ **Dark Mode** - Modern UI with dark theme support
+## 🌟 Live Demo
 
-## 🏗️ Tech Stack
+**Frontend**: [https://ags-gearstore.vercel.app](https://ags-gearstore.vercel.app)  
+**Backend API**: [https://ags-gearstore-api.herokuapp.com](https://ags-gearstore-api.herokuapp.com)
 
-### Backend
-- **Django 5.2** - Python web framework
-- **Django REST Framework** - API development
-- **SQLite** - Database (easily switchable to PostgreSQL)
-- **JWT Authentication** - Secure token-based auth
-- **Paystack API** - Payment processing
+## 🎯 Core Features
 
-### Frontend
-- **Next.js 16** - React framework
-- **TypeScript** - Type-safe JavaScript
-- **TailwindCSS** - Utility-first CSS
-- **Framer Motion** - Smooth animations
-- **React Context** - State management
+### 🛒 E-Commerce Features
+- ✅ **Complete Product Catalog** - Soccer jerseys, cleats, and accessories with size variants
+- ✅ **Advanced Shopping Cart** - Add/remove items with quantity management
+- ✅ **Secure Payment Processing** - Paystack integration with webhook verification
+- ✅ **Multi-step Checkout** - Guest checkout + registered user flow
+- ✅ **Order Management** - Complete order tracking and history
+- ✅ **Inventory Management** - Real-time stock tracking and low stock alerts
+
+### 👤 User Experience
+- ✅ **User Authentication** - JWT-based registration and login
+- ✅ **Personalized Dashboard** - Order history and profile management
+- ✅ **Loyalty Points System** - Earn points on purchases (1 point per $10)
+- ✅ **Guest Checkout** - Purchase without registration
+- ✅ **Responsive Design** - Perfect on mobile, tablet, and desktop
+- ✅ **Dark Mode Support** - Modern UI with theme switching
+
+### 💰 Nigerian Market Features
+- ✅ **Naira Pricing** - All prices displayed in ₦ (₦1,600 = $1)
+- ✅ **Local Delivery Zones** - 7 Nigerian cities with calculated shipping
+- ✅ **Paystack Integration** - Trusted Nigerian payment processor
+- ✅ **Local Customer Support** - Optimized for Nigerian users
+
+## 🏗️ Technology Stack
+
+### Backend Architecture
+```
+Django 5.2 + Django REST Framework
+├── SQLite/PostgreSQL Database
+├── JWT Authentication
+├── Paystack Payment API
+├── RESTful API Design
+├── Automated Testing
+└── Production-Ready Deployment
+```
+
+### Frontend Architecture
+```
+Next.js 16 + TypeScript
+├── App Router (Latest Next.js)
+├── Server & Client Components
+├── TailwindCSS + Custom Design System
+├── Framer Motion Animations
+├── React Context State Management
+├── Paystack Web SDK Integration
+└── Progressive Web App (PWA) Ready
+```
+
+### DevOps & Deployment
+- **Environment Management** - Secure `.env` configuration
+- **Database Migrations** - Django migrations for schema changes
+- **API Documentation** - Auto-generated OpenAPI/Swagger docs
+- **Docker Support** - Containerized deployment ready
+- **CI/CD Ready** - GitHub Actions workflow templates
 
 ## 📋 Prerequisites
 
-- Python 3.8+
-- Node.js 18+
-- npm or yarn
-- Paystack account ([Sign up here](https://paystack.com))
+- **Python 3.8+** with pip
+- **Node.js 18+** with npm/yarn
+- **Paystack Account** - [Sign up at paystack.com](https://paystack.com)
+- **Git** for version control
 
-## 🚀 Quick Start
+## 🚀 Quick Start (5 Minutes)
 
-### 1. Clone and Setup
-
+### 1. One-Command Setup
 ```bash
-cd "AG's"
+git clone https://github.com/yourusername/ags-gearstore.git
+cd ags-gearstore
 chmod +x install_dependencies.sh
 ./install_dependencies.sh
 ```
 
-### 2. Configure Environment Variables
+### 2. Configure Paystack
+Get your API keys from [Paystack Dashboard](https://dashboard.paystack.com/#/settings/developers):
 
-#### Backend (.env)
-Edit `gearstore_backend/.env`:
+**Backend** (`gearstore_backend/.env`):
 ```bash
 PAYSTACK_SECRET_KEY=sk_test_your_secret_key_here
 PAYSTACK_PUBLIC_KEY=pk_test_your_public_key_here
+PAYSTACK_CALLBACK_URL=http://localhost:3000/payment/callback
 ```
 
-#### Frontend (.env.local)
-Edit `ag-gearstore/.env.local`:
+**Frontend** (`ag-gearstore/.env.local`):
 ```bash
+NEXT_PUBLIC_API_URL=http://localhost:8000
 NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_your_public_key_here
 ```
 
-### 3. Start Development Servers
-
+### 3. Launch Application
 ```bash
 # Terminal 1 - Backend
 cd gearstore_backend
-source venv/bin/activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
+python manage.py migrate
 python manage.py runserver
 
 # Terminal 2 - Frontend
@@ -73,230 +114,305 @@ cd ag-gearstore
 npm run dev
 ```
 
-### 4. Access the Application
-
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **Admin Panel**: http://localhost:8000/admin
-
-## 📚 Documentation
-
-- **[Environment Setup Guide](ENV_SETUP_GUIDE.md)** - Complete .env configuration
-- **[Paystack Quick Start](PAYSTACK_QUICK_START.md)** - 5-minute payment setup
-- **[Paystack Full Setup](PAYSTACK_SETUP.md)** - Detailed payment integration
-- **[Cart System](CART_SYSTEM.md)** - Shopping cart documentation
-- **[Design Update](DESIGN_UPDATE.md)** - UI/UX design system
-
-## 🔧 Project Structure
-
-```
-AG's/
-├── gearstore_backend/          # Django backend
-│   ├── store/                  # Store app (products, orders)
-│   ├── users/                  # User authentication
-│   ├── loyalty/                # Loyalty points system
-│   ├── fanzone/                # Fan community features
-│   ├── .env                    # Environment variables (gitignored)
-│   ├── .env.example            # Environment template
-│   └── requirements.txt        # Python dependencies
-│
-├── ag-gearstore/               # Next.js frontend
-│   ├── src/
-│   │   ├── app/                # Next.js pages
-│   │   ├── components/         # React components
-│   │   ├── contexts/           # React contexts (cart, etc.)
-│   │   └── lib/                # Utilities and API clients
-│   ├── .env.local              # Environment variables (gitignored)
-│   ├── .env.example            # Environment template
-│   └── package.json            # Node dependencies
-│
-└── Documentation files         # Setup guides and docs
-```
-
-## 🔐 Security
-
-- ✅ Environment variables for sensitive data
-- ✅ `.env` files gitignored
-- ✅ JWT token authentication
-- ✅ CORS configuration
-- ✅ Paystack webhook verification (TODO)
+### 4. Access Your Store
+- 🏪 **Store**: http://localhost:3000
+- 🔧 **Admin Panel**: http://localhost:8000/admin
+- 📚 **API Docs**: http://localhost:8000/docs
 
 ## 💳 Payment Testing
 
 ### Test Cards (Paystack Test Mode)
-
-**Successful Payment:**
-```
-Card: 4084 0840 8408 4081
+```bash
+# Successful Payment
+Card Number: 4084 0840 8408 4081
 CVV: 408
-Expiry: Any future date
+Expiry: 12/25
 PIN: 0000
 OTP: 123456
-```
 
-**Failed Payment:**
-```
-Card: 5060 6666 6666 6666
+# Failed Payment
+Card Number: 5060 6666 6666 6666
 CVV: 123
-Expiry: Any future date
+Expiry: 12/25
 ```
 
-## 🧪 Testing the Application
+## 🏪 Store Features
 
-1. **Browse Products**
-   - Visit http://localhost:3000
-   - Click "Shop" to see products
+### Product Management
+- **Dynamic Product Catalog** - Add/edit products via Django admin
+- **Size Variants** - Multiple sizes per product (S, M, L, XL, etc.)
+- **Stock Management** - Real-time inventory tracking
+- **Product Categories** - Organized browsing experience
+- **Product Images** - High-quality product photography
 
-2. **Add to Cart**
-   - Click "Add to Cart" on any product
-   - Select size
-   - View cart icon badge update
+### Shopping Experience
+- **Visual Product Cards** - Hover effects and smooth animations
+- **Quick Add to Cart** - One-click size selection modal
+- **Cart Persistence** - Items saved in localStorage
+- **Quantity Management** - Increase/decrease item quantities
+- **Cart Summary** - Real-time total calculations
+- **Empty Cart Handling** - Graceful empty state
 
-3. **Checkout**
-   - Go to cart
-   - Click "Proceed to Checkout"
-   - Enter email
-   - Complete payment with test card
+### Checkout Process
+- **Multi-step Form** - Contact info → delivery → payment
+- **Form Validation** - Real-time validation with error messages
+- **Delivery Zones** - 7 Nigerian cities with calculated fees:
+  - Lagos Mainland: ₦2,000
+  - Lagos Island: ₦2,500
+  - Abuja: ₦3,000
+  - Port Harcourt: ₦3,500
+  - Ibadan: ₦2,500
+  - Kano: ₦4,000
+  - Other Cities: ₦4,500
+- **Order Summary** - Complete order review before payment
+- **Payment Security** - SSL encryption + Paystack security
 
-4. **Verify Payment**
-   - Redirected to success page
-   - Cart cleared automatically
+### User System
+- **Registration/Login** - Secure JWT authentication
+- **Profile Management** - Update personal information
+- **Order History** - Track all past orders
+- **Loyalty Points** - Earn 1 point per ₦1,600 spent
+- **Password Reset** - Secure password recovery
+- **Session Management** - Automatic logout on inactivity
 
-## 📦 API Endpoints
+## 🔧 API Architecture
 
-### Products
-- `GET /api/store/products/` - List all products
-- `GET /api/store/products/{id}/` - Get product details
-- `GET /api/store/categories/` - List categories
+### RESTful Endpoints
+```
+Products API
+├── GET    /api/store/products/          # List products
+├── GET    /api/store/products/{id}/     # Product details
+├── GET    /api/store/categories/        # Product categories
+└── GET    /api/store/products/{id}/variants/  # Size variants
 
-### Payment
-- `POST /api/store/payment/initialize/` - Initialize payment
-- `GET /api/store/payment/verify/{ref}/` - Verify payment
-- `POST /api/store/payment/webhook/` - Paystack webhook
+Payment API
+├── POST   /api/store/payment/initialize/  # Start payment
+├── GET    /api/store/payment/verify/{ref}/ # Verify payment
+└── POST   /api/store/payment/webhook/    # Paystack webhooks
 
-### Authentication
-- `POST /api/users/register/` - Register new user
-- `POST /api/users/login/` - Login user
-- `GET /api/users/profile/` - Get user profile
+User API
+├── POST   /api/users/register/          # User registration
+├── POST   /api/users/login/             # User login
+├── GET    /api/users/profile/           # User profile
+└── PUT    /api/users/profile/           # Update profile
+```
 
-## 🚀 Deployment
+### Authentication Flow
+```javascript
+// JWT Token Flow
+POST /api/users/login/ → { token, user }
+Authorization: Bearer {token}
+GET /api/users/profile/ → user data
+```
 
-### Backend (Django)
+## 🎨 Design System
 
-1. Update `.env` for production:
+### Color Palette
+- **Primary**: Blue-950 (#1e293b) - Trust and professionalism
+- **Secondary**: Amber-500 (#f59e0b) - Energy and excitement
+- **Accent**: Blue-600 (#2563eb) - Action buttons
+- **Neutral**: Gray-900/100 - Text and backgrounds
+
+### Typography
+- **Primary Font**: Geist Sans (Google Fonts)
+- **Code Font**: Geist Mono
+- **Hierarchy**: Consistent heading sizes and spacing
+
+### Components
+- **Buttons**: Rounded-none design with hover states
+- **Cards**: Clean shadows with smooth transitions
+- **Forms**: Inline validation with error states
+- **Modals**: Centered overlays with backdrop blur
+- **Navigation**: Minimalist header with cart indicator
+
+## 🚀 Deployment Guide
+
+### Backend Deployment (Railway/Heroku)
 ```bash
+# 1. Create app on Railway/Heroku
+# 2. Set environment variables
 DEBUG=False
-ALLOWED_HOSTS=yourdomain.com
 PAYSTACK_SECRET_KEY=sk_live_your_live_key
+PAYSTACK_PUBLIC_KEY=pk_live_your_public_key
+ALLOWED_HOSTS=your-app-domain.com
+
+# 3. Database setup
+python manage.py migrate
+
+# 4. Static files
+python manage.py collectstatic
 ```
 
-2. Use PostgreSQL or MySQL instead of SQLite
-3. Set up static file serving
-4. Configure webhook URL in Paystack dashboard
-
-### Frontend (Next.js)
-
-1. Update `.env.production`:
+### Frontend Deployment (Vercel)
 ```bash
-NEXT_PUBLIC_API_URL=https://api.yourdomain.com
-NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_live_your_live_key
+# 1. Connect GitHub repository
+# 2. Set environment variables
+NEXT_PUBLIC_API_URL=https://your-api-domain.com
+NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_live_your_key
+
+# 3. Deploy
+npm run build  # Automatic on Vercel
 ```
 
-2. Build for production:
+### Production Checklist
+- [ ] HTTPS enabled
+- [ ] Database migrated
+- [ ] Static files served
+- [ ] Environment variables set
+- [ ] Paystack webhook URL configured
+- [ ] Domain configured
+- [ ] SSL certificate active
+
+## 🧪 Testing Strategy
+
+### Backend Testing
 ```bash
-npm run build
-npm start
+cd gearstore_backend
+python manage.py test store.tests
+python manage.py test users.tests
 ```
 
-3. Deploy to Vercel, Netlify, or your preferred host
+### Frontend Testing
+```bash
+cd ag-gearstore
+npm run test
+npm run test:e2e  # End-to-end tests
+```
+
+### Payment Testing
+```bash
+# Test payment initialization
+curl -X POST http://localhost:8000/api/store/payment/initialize/ \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","cart_items":[],"delivery_fee":2000}'
+```
 
 ## 🐛 Troubleshooting
 
-### Backend Issues
+### Common Issues
 
-**Module not found errors:**
+**Backend: ModuleNotFoundError**
 ```bash
 cd gearstore_backend
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**Database errors:**
-```bash
-python manage.py migrate
-```
-
-### Frontend Issues
-
-**Dependencies not installed:**
+**Frontend: Dependencies Missing**
 ```bash
 cd ag-gearstore
+rm -rf node_modules package-lock.json
 npm install
 ```
 
-**Environment variables not loading:**
-- Restart dev server after changing `.env.local`
-- Ensure variables start with `NEXT_PUBLIC_`
+**Payment: 401 Unauthorized**
+- Check Paystack keys in `.env` files
+- Verify keys are for test/live mode consistently
+- Restart backend server after key changes
 
-### Payment Issues
-
-**Payment initialization fails:**
-- Check Paystack keys in `.env`
-- Verify keys are correct (test vs live)
-- Check backend logs for errors
-
-**Callback not working:**
-- Ensure frontend is running on port 3000
-- Check callback URL in Paystack settings
-
-## 📝 Development Workflow
-
-1. **Create feature branch**
+**Database: Migration Errors**
 ```bash
-git checkout -b feature/your-feature
+cd gearstore_backend
+python manage.py makemigrations
+python manage.py migrate
 ```
 
-2. **Make changes**
-- Backend: Edit files in `gearstore_backend/`
-- Frontend: Edit files in `ag-gearstore/src/`
-
-3. **Test locally**
-- Run both servers
-- Test functionality
-- Check for errors
-
-4. **Commit and push**
+**Frontend: Environment Variables**
 ```bash
-git add .
-git commit -m "Add your feature"
-git push origin feature/your-feature
+# Delete .next folder and restart
+rm -rf .next
+npm run dev
 ```
+
+## 📊 Performance Optimizations
+
+### Frontend
+- **Image Optimization** - Next.js automatic image optimization
+- **Code Splitting** - Automatic route-based splitting
+- **Lazy Loading** - Components loaded on demand
+- **Caching** - Browser caching for static assets
+
+### Backend
+- **Database Indexing** - Optimized queries
+- **Caching** - Redis ready for session/product caching
+- **Pagination** - Efficient large dataset handling
+- **Rate Limiting** - API rate limiting ready
+
+## 🔐 Security Features
+
+- ✅ **Environment Variables** - No secrets in code
+- ✅ **JWT Authentication** - Secure token-based auth
+- ✅ **CORS Protection** - Configured allowed origins
+- ✅ **Input Validation** - Django forms + frontend validation
+- ✅ **SQL Injection Prevention** - Django ORM protection
+- ✅ **XSS Protection** - React automatic escaping
+- ✅ **CSRF Protection** - Django CSRF tokens
+
+## 📈 Analytics & Monitoring
+
+### Built-in Features
+- **Order Tracking** - Complete order lifecycle
+- **Payment Analytics** - Success/failure rates
+- **User Behavior** - Cart abandonment tracking
+- **Performance Monitoring** - Response times and errors
+
+### Integration Ready
+- **Google Analytics** - User behavior tracking
+- **Paystack Analytics** - Payment insights
+- **Error Monitoring** - Sentry integration ready
+- **Performance Monitoring** - New Relic ready
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+### Development Workflow
+1. **Fork** the repository
+2. **Create** feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** changes: `git commit -m 'Add amazing feature'`
+4. **Push** branch: `git push origin feature/amazing-feature`
+5. **Open** Pull Request
+
+### Code Standards
+- **Backend**: PEP 8 Python style
+- **Frontend**: ESLint + Prettier
+- **Commits**: Conventional commit format
+- **Tests**: 80%+ code coverage target
+
+### Pull Request Process
+1. Update documentation for new features
+2. Add tests for new functionality
+3. Ensure CI/CD passes
+4. Code review required
+5. Squash and merge
 
 ## 📄 License
 
-This project is private and proprietary.
+This project is proprietary. All rights reserved.
 
 ## 🆘 Support
 
-For issues or questions:
-- Check documentation files
-- Review Paystack docs: https://paystack.com/docs
-- Contact: your-email@example.com
+**Need Help?**
+- 📧 **Email**: support@agsgearstore.com
+- 💬 **Discord**: [Join our community](https://discord.gg/agsgearstore)
+- 📚 **Documentation**: Check inline code comments
+- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/ags-gearstore/issues)
 
 ## 🎉 Acknowledgments
 
-- Paystack for payment processing
-- Next.js team for the amazing framework
-- Django community for the robust backend
+**Built with ❤️ for soccer fans worldwide**
+
+### Core Technologies
+- **Paystack** - Secure Nigerian payment processing
+- **Django** - Battle-tested Python web framework
+- **Next.js** - The React framework for production
+- **TailwindCSS** - Utility-first CSS framework
+
+### Inspiration
+- **Soccer Culture** - Celebrating football passion
+- **Nigerian Tech** - Supporting local innovation
+- **Open Source** - Standing on giants' shoulders
 
 ---
 
-**Made with ❤️ for soccer fans worldwide**
+**AG's GearStore** - Where soccer meets technology. ⚽💻
+
+*Ready to score big with your e-commerce platform?* 🚀
